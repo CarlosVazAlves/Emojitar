@@ -19,14 +19,32 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.carlosalves.emojitar.ui.theme.EmojitarTheme
 import com.carlosalves.emojitar.R
+import coil3.compose.AsyncImage
+import com.carlosalves.emojitar.ui.theme.EmojitarTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    uiState: HomeUiState,
+    onGetEmojiClick: () -> Unit,
+    onRandomEmojiClick: () -> Unit
+) {
 
     var userName by rememberSaveable { mutableStateOf("") }
+    val emojiListLoaded = uiState.emojiListPopulated
+
+    if (uiState.isLoading) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = 0.3f)),
+            contentAlignment = Alignment.Center
+        ) {
+
+            CircularProgressIndicator()
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -37,17 +55,27 @@ fun HomeScreen() {
         verticalArrangement = Arrangement.Center
     ) {
 
-        Icon(
-            imageVector = Icons.Default.Android,
-            contentDescription = null,
-            modifier = Modifier.size(200.dp)
-        )
+        if (emojiListLoaded) {
+            AsyncImage(
+                model = uiState.currentEmoji?.imageUrl,
+                contentDescription = uiState.currentEmoji?.name,
+                modifier = Modifier.size(200.dp)
+            )
+        } else {
+            Icon(
+                imageVector = Icons.Default.Android,
+                contentDescription = null,
+                modifier = Modifier.size(200.dp)
+            )
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
 
         Button(
-            onClick = {},
+            onClick = {if (emojiListLoaded) onRandomEmojiClick() else onGetEmojiClick()},
             modifier = Modifier.fillMaxWidth(0.7f)
         ) {
-            Text(stringResource(R.string.random_emoji))
+            Text(if (emojiListLoaded) stringResource(R.string.random_emoji) else stringResource(R.string.get_emojis))
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -119,10 +147,20 @@ fun HomeScreen() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
 @Composable
 private fun HomeScreenPreview() {
+
     EmojitarTheme {
-        HomeScreen()
+        HomeScreen(
+            uiState = HomeUiState(
+                emojiListPopulated = false
+            ),
+            onGetEmojiClick = {},
+            onRandomEmojiClick = {}
+        )
     }
 }
