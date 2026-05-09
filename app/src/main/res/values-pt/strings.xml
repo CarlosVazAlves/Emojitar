@@ -6,4 +6,5 @@
     <string name="avatar_list">Lista de Avatares</string>
     <string name="google_repos">Repositórios da Google</string>
     <string name="search_avatar">Procurar Avatar</string>
+    <string name="get_emojis">Sacar emojis</string>
 </resources>
