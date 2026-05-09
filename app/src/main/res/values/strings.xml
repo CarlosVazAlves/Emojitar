@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Emojitar</string>
+    <string name="title_activity_emojitar">EmojitarActivity</string>
+</resources>
