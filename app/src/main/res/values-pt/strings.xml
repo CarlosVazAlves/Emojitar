@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Emojitar</string>
+    <string name="random_emoji">Emoji aleatório</string>
+    <string name="emoji_list">Lista de Emojis</string>
+    <string name="avatar_list">Lista de Avatares</string>
+    <string name="google_repos">Repositórios da Google</string>
+    <string name="search_avatar">Procurar Avatar</string>
+</resources>

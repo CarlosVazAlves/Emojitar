@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Emojitar</string>
-    <string name="title_activity_emojitar">EmojitarActivity</string>
+    <string name="title_activity_emojitar" translatable="false">EmojitarActivity</string>
+    <string name="random_emoji">Random Emoji</string>
+    <string name="emoji_list">Emoji List</string>
+    <string name="avatar_list">Avatar List</string>
+    <string name="google_repos">Google Repos</string>
+    <string name="search_avatar">Search Avatar</string>
 </resources>
