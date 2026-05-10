@@ -6,8 +6,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import dagger.hilt.android.HiltAndroidApp
 import androidx.navigation.compose.rememberNavController
+import com.carlosalves.emojitar.routes.AvatarListRoute
 import com.carlosalves.emojitar.routes.EmojiListRoute
 import com.carlosalves.emojitar.routes.HomeRoute
+import com.carlosalves.emojitar.routes.Routes.AVATAR_LIST
+import com.carlosalves.emojitar.routes.Routes.EMOJI_LIST
+import com.carlosalves.emojitar.routes.Routes.HOME
 
 @HiltAndroidApp
 class EmojitarApplication : Application()
@@ -19,13 +23,16 @@ fun EmojitarApp() {
 
     NavHost(
         navController = navController,
-        startDestination = "home"
+        startDestination = HOME
     ) {
-        composable("home") {
+        composable(HOME) {
             HomeRoute(navController)
         }
-        composable("emoji_list") {
+        composable(EMOJI_LIST) {
             EmojiListRoute()
+        }
+        composable(AVATAR_LIST) {
+            AvatarListRoute()
         }
     }
 }
