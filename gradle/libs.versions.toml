@@ -22,6 +22,7 @@ converterGson = "3.0.0"
 room = "2.8.4"
 coil = "3.4.0"
 ktor = "3.4.3"
+paging = "3.5.0"
 
 [libraries]
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
@@ -55,6 +56,8 @@ androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref =
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+androidx-paging-runtime = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+androidx-paging-compose = { module = "androidx.paging:paging-compose", version.ref = "paging" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

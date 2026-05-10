@@ -84,4 +84,8 @@ dependencies {
     implementation(libs.ktor.client.android)
     implementation(libs.coil.compose)
     implementation(libs.coil.network.okhttp)
+
+    //Paging3
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
 }

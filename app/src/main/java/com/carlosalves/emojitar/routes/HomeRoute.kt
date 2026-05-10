@@ -15,6 +15,7 @@ import com.carlosalves.emojitar.homescreen.HomeScreen
 import com.carlosalves.emojitar.homescreen.HomeViewModel
 import com.carlosalves.emojitar.routes.Routes.AVATAR_LIST
 import com.carlosalves.emojitar.routes.Routes.EMOJI_LIST
+import com.carlosalves.emojitar.routes.Routes.REPO
 
 @Composable
 fun HomeRoute(navController: NavHostController, viewModel: HomeViewModel = hiltViewModel()) {
@@ -47,6 +48,9 @@ fun HomeRoute(navController: NavHostController, viewModel: HomeViewModel = hiltV
         },
         onAvatarListClick = {
             navController.navigate(AVATAR_LIST)
+        },
+        onGoogleReposClick = {
+            navController.navigate(REPO)
         }
     )
 }
