@@ -1,5 +1,6 @@
 package com.carlosalves.emojitar.homescreen
 
+import android.widget.Toast
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
 import androidx.compose.foundation.*
@@ -16,6 +17,7 @@ import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -28,7 +30,8 @@ import com.carlosalves.emojitar.ui.theme.EmojitarTheme
 fun HomeScreen(
     uiState: HomeUiState,
     onGetEmojiClick: () -> Unit,
-    onRandomEmojiClick: () -> Unit
+    onRandomEmojiClick: () -> Unit,
+    onEmojiListClick: () -> Unit
 ) {
 
     var userName by rememberSaveable { mutableStateOf("") }
@@ -80,8 +83,16 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        val listNotLoadedToast = Toast.makeText(LocalContext.current, stringResource(R.string.list_not_loaded), Toast.LENGTH_SHORT)
+
         Button(
-            onClick = {},
+            onClick = {
+                if (emojiListLoaded) {
+                    onEmojiListClick()
+                } else {
+                    listNotLoadedToast.show()
+                }
+            },
             modifier = Modifier.fillMaxWidth(0.7f)
         ) {
             Text(stringResource(R.string.emoji_list))
@@ -160,7 +171,8 @@ private fun HomeScreenPreview() {
                 emojiListPopulated = false
             ),
             onGetEmojiClick = {},
-            onRandomEmojiClick = {}
+            onRandomEmojiClick = {},
+            onEmojiListClick = {}
         )
     }
 }
