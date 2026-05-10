@@ -2,6 +2,7 @@ package com.carlosalves.emojitar.homescreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.carlosalves.emojitar.model.Emoji
 import com.carlosalves.emojitar.repositories.avatar.AvatarRepository
 import com.carlosalves.emojitar.repositories.emoji.EmojiEntity
 import com.carlosalves.emojitar.repositories.emoji.EmojiRepository
@@ -20,7 +21,7 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState = _uiState.asStateFlow()
-    private val emojiList: MutableList<EmojiEntity> = mutableListOf()
+    private val emojiList: MutableList<Emoji> = mutableListOf()
 
     fun loadEmojis() {
         viewModelScope.launch(Dispatchers.IO) {

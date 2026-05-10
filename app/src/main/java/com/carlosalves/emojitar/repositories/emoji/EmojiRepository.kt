@@ -27,7 +27,7 @@ class EmojiRepository @Inject constructor(
         }
     }
 
-    suspend fun getEmojis() = emojiDao.getAll()
+    suspend fun getEmojis() = emojiDao.getAll().map { emojiEntity -> emojiEntity.toEmoji() }
 
     suspend fun deleteAllEmojis() = emojiDao.deleteAll()
 }

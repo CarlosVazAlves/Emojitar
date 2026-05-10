@@ -1,9 +1,9 @@
 package com.carlosalves.emojitar.homescreen
 
-import com.carlosalves.emojitar.repositories.emoji.EmojiEntity
+import com.carlosalves.emojitar.model.Emoji
 
 data class HomeUiState(
-    val currentEmoji: EmojiEntity? = null,
+    val currentEmoji: Emoji? = null,
     val isLoading: Boolean = false,
     val emojiListPopulated: Boolean = false
 )

@@ -1,8 +1,6 @@
 package com.carlosalves.emojitar.repositories.avatar
 
 import com.carlosalves.emojitar.api.ApiService
-import com.carlosalves.emojitar.api.dtos.EmojiDTO
-import com.carlosalves.emojitar.utilities.Converter
 import javax.inject.Inject
 
 class AvatarRepository @Inject constructor(
@@ -26,7 +24,7 @@ class AvatarRepository @Inject constructor(
         }
     }
 
-    suspend fun getAvatars() = avatarDao.getAll()
+    suspend fun getAvatars() = avatarDao.getAll().map { avatarEntity -> avatarEntity.toAvatar() }
 
     suspend fun deleteAvatar(username: String) = avatarDao.delete(username)
 }
