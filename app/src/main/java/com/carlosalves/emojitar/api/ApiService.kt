@@ -9,12 +9,12 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("emojis")
-    suspend fun getEmojis(): Response<Map<String, String>>
+    suspend fun getEmojis(): Map<String, String>
 
     @GET("users/{username}")
     suspend fun getAvatarsByUsername(
         @Path("username") username: String
-    ): Response<AvatarDTO>
+    ): AvatarDTO
 
     @GET("users/google/repos")
     suspend fun getGoogleRepos(

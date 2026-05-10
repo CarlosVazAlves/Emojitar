@@ -14,17 +14,16 @@ class AvatarRepository @Inject constructor(
             return true
         }
 
-        val getAvatarResponse = apiService.getAvatarsByUsername(username)
-
-        if (getAvatarResponse.isSuccessful && getAvatarResponse.body() != null) {
-            avatarDao.insert(getAvatarResponse.body()!!.toAvatarEntity())
+        try {
+            val avatar = apiService.getAvatarsByUsername(username)
+            avatarDao.insert(avatar.toAvatarEntity())
             return true
-        } else {
+        } catch (_: Exception) {
             return false
         }
     }
 
-    suspend fun getAvatars() = avatarDao.getAll().map { avatarEntity -> avatarEntity.toAvatar() }
+    suspend fun getAvatars() = avatarDao.getAll().map(AvatarEntity::toAvatar)
 
     suspend fun deleteAvatar(username: String) = avatarDao.delete(username)
 

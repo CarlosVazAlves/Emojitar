@@ -1,6 +1,7 @@
 package com.carlosalves.emojitar.repositories.emoji
 
 import com.carlosalves.emojitar.api.ApiService
+import com.carlosalves.emojitar.api.dtos.EmojiDTO
 import com.carlosalves.emojitar.utilities.Converter
 import javax.inject.Inject
 
@@ -16,18 +17,17 @@ class EmojiRepository @Inject constructor(
             return true
         }
 
-        val getEmojisResponse = apiService.getEmojis()
-
-        if (getEmojisResponse.isSuccessful && getEmojisResponse.body() != null) {
-            val listEmojis = Converter.convertMapToEmojiList(getEmojisResponse.body()!!)
-            emojiDao.insertAll(listEmojis.map { emojiDTO -> emojiDTO.toEmojiEntity() })
+        try {
+            val emojisMap = apiService.getEmojis()
+            val listEmojis = Converter.convertMapToEmojiList(emojisMap)
+            emojiDao.insertAll(listEmojis.map(EmojiDTO::toEmojiEntity))
             return true
-        } else {
+        } catch (_: Exception) {
             return false
         }
     }
 
-    suspend fun getEmojis() = emojiDao.getAll().map { emojiEntity -> emojiEntity.toEmoji() }
+    suspend fun getEmojis() = emojiDao.getAll().map(EmojiEntity::toEmoji)
 
     suspend fun deleteAllEmojis() = emojiDao.deleteAll()
 }
