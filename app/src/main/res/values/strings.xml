@@ -7,4 +7,5 @@
     <string name="google_repos">Google Repos</string>
     <string name="search_avatar">Search Avatar</string>
     <string name="get_emojis">Get Emojis</string>
+    <string name="list_not_loaded">Emoji list not loaded yet</string>
 </resources>
