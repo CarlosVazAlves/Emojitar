@@ -8,4 +8,7 @@
     <string name="search_avatar">Procurar Avatar</string>
     <string name="get_emojis">Sacar emojis</string>
     <string name="list_not_loaded">Lista de emojis ainda não foi carregada</string>
+    <string name="avatar_stored_successfully">Avatar guardado com sucesso</string>
+    <string name="unable_to_store_avatar">Não foi possível guardar o Avatar</string>
+    <string name="no_avatar_available">Nenhum avatar disponível</string>
 </resources>

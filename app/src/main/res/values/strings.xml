@@ -8,4 +8,7 @@
     <string name="search_avatar">Search Avatar</string>
     <string name="get_emojis">Get Emojis</string>
     <string name="list_not_loaded">Emoji list not loaded yet</string>
+    <string name="avatar_stored_successfully">Avatar Stored Successfully</string>
+    <string name="unable_to_store_avatar">Unable to store Avatar</string>
+    <string name="no_avatar_available">No Avatar Available</string>
 </resources>
