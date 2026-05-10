@@ -11,7 +11,6 @@ import com.carlosalves.emojitar.emojilistscreen.EmojiListViewModel
 fun EmojiListRoute(
     viewModel: EmojiListViewModel = hiltViewModel()
 ) {
-
     val uiState by viewModel
         .uiState
         .collectAsStateWithLifecycle()

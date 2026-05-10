@@ -15,7 +15,6 @@ import javax.inject.Inject
 class AvatarListViewModel @Inject constructor(
     private val repository: AvatarRepository
 ) : ViewModel() {
-
     private val _uiState = MutableStateFlow(AvatarListUiState())
     val uiState = _uiState.asStateFlow()
 

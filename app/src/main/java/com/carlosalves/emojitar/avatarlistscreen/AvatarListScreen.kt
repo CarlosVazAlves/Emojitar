@@ -18,7 +18,6 @@ fun AvatarListScreen(
     uiState: AvatarListUiState,
     onAvatarClick: (Avatar) -> Unit
 ) {
-
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.fillMaxSize(),

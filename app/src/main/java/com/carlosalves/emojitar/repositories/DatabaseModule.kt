@@ -21,7 +21,6 @@ object DatabaseModule {
     fun provideDatabase(
         @ApplicationContext context: Context
     ): EmojitarDatabase {
-
         return Room.databaseBuilder(
             context,
             EmojitarDatabase::class.java,

@@ -11,7 +11,6 @@ import com.carlosalves.emojitar.avatarlistscreen.AvatarListViewModel
 fun AvatarListRoute(
     viewModel: AvatarListViewModel = hiltViewModel()
 ) {
-
     val uiState by viewModel
         .uiState
         .collectAsStateWithLifecycle()

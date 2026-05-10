@@ -23,7 +23,6 @@ class HomeViewModel @Inject constructor(
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState = _uiState.asStateFlow()
     private val emojiList: MutableList<Emoji> = mutableListOf()
-
     private val _events = MutableSharedFlow<HomeEvent>()
     val event = _events.asSharedFlow()
 
@@ -72,7 +71,6 @@ class HomeViewModel @Inject constructor(
             _uiState.update {
                 it.copy(isLoading = false, avatarsLoaded = loadedSuccessfully)
             }
-
             _events.emit(if (loadedSuccessfully) HomeEvent.AvatarSaved else HomeEvent.AvatarSaveFailed)
         }
     }

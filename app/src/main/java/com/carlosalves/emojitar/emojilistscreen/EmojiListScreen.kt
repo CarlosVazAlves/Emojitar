@@ -26,7 +26,6 @@ fun EmojiListScreen(
     onEmojiClick: (Emoji) -> Unit,
     onRefresh: () -> Unit
 ) {
-
     val pullToRefreshState = rememberPullToRefreshState()
 
     PullToRefreshBox(

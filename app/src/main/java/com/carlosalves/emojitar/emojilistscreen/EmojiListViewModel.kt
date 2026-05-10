@@ -15,7 +15,6 @@ import javax.inject.Inject
 class EmojiListViewModel @Inject constructor(
     private val repository: EmojiRepository
 ) : ViewModel() {
-
     private var originalList = emptyList<Emoji>()
     private val _uiState = MutableStateFlow(EmojiListUiState())
     val uiState = _uiState.asStateFlow()

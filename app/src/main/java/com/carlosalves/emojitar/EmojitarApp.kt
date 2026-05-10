@@ -20,7 +20,6 @@ class EmojitarApplication : Application()
 
 @Composable
 fun EmojitarApp() {
-
     val navController = rememberNavController()
 
     NavHost(

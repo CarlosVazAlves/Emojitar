@@ -36,7 +36,6 @@ fun HomeScreen(
     onAvatarListClick: () -> Unit,
     onGoogleReposClick: () -> Unit,
 ) {
-
     var userName by rememberSaveable { mutableStateOf("") }
     val emojiListLoaded = uiState.emojiListPopulated
 
@@ -50,7 +49,6 @@ fun HomeScreen(
                 .background(Color.Black.copy(alpha = 0.3f)),
             contentAlignment = Alignment.Center
         ) {
-
             CircularProgressIndicator()
         }
     }
@@ -111,7 +109,6 @@ fun HomeScreen(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-
             OutlinedTextField(
                 value = userName,
                 onValueChange = {newUsername -> userName = newUsername},
@@ -168,13 +165,13 @@ fun HomeScreen(
     }
 }
 
+
 @Preview(
     showBackground = true,
     showSystemUi = true
 )
 @Composable
 private fun HomeScreenPreview() {
-
     EmojitarTheme {
         HomeScreen(
             uiState = HomeUiState(),
