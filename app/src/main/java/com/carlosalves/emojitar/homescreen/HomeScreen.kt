@@ -31,11 +31,16 @@ fun HomeScreen(
     uiState: HomeUiState,
     onGetEmojiClick: () -> Unit,
     onRandomEmojiClick: () -> Unit,
-    onEmojiListClick: () -> Unit
+    onEmojiListClick: () -> Unit,
+    onAvatarSearch: (String) -> Unit,
+    onAvatarListClick: () -> Unit,
 ) {
 
     var userName by rememberSaveable { mutableStateOf("") }
     val emojiListLoaded = uiState.emojiListPopulated
+
+    val noEmojiToast = Toast.makeText(LocalContext.current, stringResource(R.string.list_not_loaded), Toast.LENGTH_SHORT)
+    val noAvatarToast = Toast.makeText(LocalContext.current, stringResource(R.string.no_avatar_available), Toast.LENGTH_SHORT)
 
     if (uiState.isLoading) {
         Box(
@@ -83,14 +88,12 @@ fun HomeScreen(
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        val listNotLoadedToast = Toast.makeText(LocalContext.current, stringResource(R.string.list_not_loaded), Toast.LENGTH_SHORT)
-
         Button(
             onClick = {
                 if (emojiListLoaded) {
                     onEmojiListClick()
                 } else {
-                    listNotLoadedToast.show()
+                    noEmojiToast.show()
                 }
             },
             modifier = Modifier.fillMaxWidth(0.7f)
@@ -123,7 +126,7 @@ fun HomeScreen(
             Spacer(modifier = Modifier.width(12.dp))
 
             IconButton(
-                onClick = {},
+                onClick = { onAvatarSearch(userName) },
                 modifier = Modifier
                     .background(
                         color = MaterialTheme.colorScheme.primary,
@@ -141,7 +144,13 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         Button(
-            onClick = {},
+            onClick = {
+                if (uiState.avatarsLoaded) {
+                    onAvatarListClick()
+                } else {
+                     noAvatarToast.show()
+                }
+            },
             modifier = Modifier.fillMaxWidth(0.7f)
         ) {
             Text(stringResource(R.string.avatar_list))
@@ -167,12 +176,12 @@ private fun HomeScreenPreview() {
 
     EmojitarTheme {
         HomeScreen(
-            uiState = HomeUiState(
-                emojiListPopulated = false
-            ),
+            uiState = HomeUiState(),
             onGetEmojiClick = {},
             onRandomEmojiClick = {},
-            onEmojiListClick = {}
+            onEmojiListClick = {},
+            onAvatarSearch = {},
+            onAvatarListClick = {}
         )
     }
 }

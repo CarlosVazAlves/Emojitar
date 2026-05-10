@@ -11,6 +11,9 @@ interface AvatarDao {
     @Query("SELECT * FROM avatars")
     suspend fun getAll(): List<AvatarEntity>
 
+    @Query("SELECT EXISTS(SELECT 1 FROM avatars LIMIT 1)")
+    suspend fun hasAny(): Boolean
+
     @Query("SELECT * FROM avatars WHERE username = :username")
     suspend fun get(username: String): AvatarEntity?
 
