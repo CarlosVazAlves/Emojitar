@@ -9,9 +9,11 @@ import androidx.navigation.compose.rememberNavController
 import com.carlosalves.emojitar.routes.AvatarListRoute
 import com.carlosalves.emojitar.routes.EmojiListRoute
 import com.carlosalves.emojitar.routes.HomeRoute
+import com.carlosalves.emojitar.routes.RepoRoute
 import com.carlosalves.emojitar.routes.Routes.AVATAR_LIST
 import com.carlosalves.emojitar.routes.Routes.EMOJI_LIST
 import com.carlosalves.emojitar.routes.Routes.HOME
+import com.carlosalves.emojitar.routes.Routes.REPO
 
 @HiltAndroidApp
 class EmojitarApplication : Application()
@@ -33,6 +35,9 @@ fun EmojitarApp() {
         }
         composable(AVATAR_LIST) {
             AvatarListRoute()
+        }
+        composable(REPO) {
+            RepoRoute()
         }
     }
 }

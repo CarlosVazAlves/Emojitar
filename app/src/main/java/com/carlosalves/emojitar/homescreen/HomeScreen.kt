@@ -34,6 +34,7 @@ fun HomeScreen(
     onEmojiListClick: () -> Unit,
     onAvatarSearch: (String) -> Unit,
     onAvatarListClick: () -> Unit,
+    onGoogleReposClick: () -> Unit,
 ) {
 
     var userName by rememberSaveable { mutableStateOf("") }
@@ -159,7 +160,7 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         Button(
-            onClick = {},
+            onClick = onGoogleReposClick,
             modifier = Modifier.fillMaxWidth(0.7f)
         ) {
             Text(stringResource(R.string.google_repos))
@@ -181,7 +182,8 @@ private fun HomeScreenPreview() {
             onRandomEmojiClick = {},
             onEmojiListClick = {},
             onAvatarSearch = {},
-            onAvatarListClick = {}
+            onAvatarListClick = {},
+            onGoogleReposClick = {}
         )
     }
 }
